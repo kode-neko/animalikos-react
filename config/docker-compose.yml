@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  
+  db: 
+   image: mongo:latest
+   restart: always
+   volumes: 
+    - ./init-db:/docker-entrypoint-initdb.d
+   ports:
+    - 3010:27017
+   environment:
+    MONGO_INITDB_ROOT_USERNAME: "root"
+    MONGO_INITDB_ROOT_PASSWORD: "SCUvvQj8k3"
+    MONGO_INITDB_DATABASE: "animalikos"
+
+  app:
+    image: node:latest
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ../../:/home/node/app
+    ports:
+      - 3011:3011
+    command: "npm start"
+    depends_on:
+      - db
+
+networks:
+  animalikos-net:
+   driver: bridge
