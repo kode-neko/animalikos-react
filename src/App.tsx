@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { MenuFrame } from './frames';
-import { Home } from './components';
+import { AkMainFrame } from './frames';
+import { AkHome } from './pages';
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MenuFrame />}>
-          <Route index element={<Home />} />
+        <Route path="/" element={<AkMainFrame />}>
+          <Route index element={<AkHome />} />
         </Route>
       </Routes>
     </BrowserRouter>
