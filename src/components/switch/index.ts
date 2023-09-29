@@ -1,0 +1,1 @@
+export {default as AkSwitch} from './AkSwitch';

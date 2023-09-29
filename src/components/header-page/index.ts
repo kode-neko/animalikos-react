@@ -1,0 +1,1 @@
+export {default as AkHeaderPage} from './AkHeaderPage';

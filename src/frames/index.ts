@@ -1,1 +1,1 @@
-export {MenuFrame} from './ManuFrame';
+export {AkMainFrame} from './main';
