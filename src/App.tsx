@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AkMainFrame } from './frames';
 import { AkHome } from './pages';
+import './styles.less';
 
 function App() {
 
