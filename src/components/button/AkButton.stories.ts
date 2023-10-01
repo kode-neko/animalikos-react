@@ -1,8 +1,6 @@
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import type { Meta, StoryObj } from '@storybook/react';
-
 import AkButton from './AkButton';
-import { faAmilia } from '@fortawesome/free-brands-svg-icons';
 
 const meta: Meta<typeof AkButton> = {
   title: 'Ak/Button',
