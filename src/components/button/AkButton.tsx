@@ -23,7 +23,7 @@ const AkHeaderPage: React.FunctionComponent<AkButtonProps> = ({title, icon, size
       className={classnames(classFinal)} 
       onClick={onClick}
     >
-      {icon && <FontAwesomeIcon className={styles.icon} icon={faCirclePlus} />}
+      {icon && <FontAwesomeIcon className={styles.icon} icon={icon} />}
       <div className={styles.label}>{title}</div>
     </button>
   );
