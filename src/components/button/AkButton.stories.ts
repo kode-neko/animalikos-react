@@ -22,6 +22,13 @@ export const NoIconS: Story = {
   },
 };
 
+export const NoIconSSecond: Story = {
+  args: {
+    title: 'Create',
+    main: false
+  },
+};
+
 export const NoIconM: Story = {
   args: {
     title: 'Create',
