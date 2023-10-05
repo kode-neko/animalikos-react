@@ -31,9 +31,11 @@ const AkSwitch: React.FunctionComponent<AkSwitchProps> = ({
       className={styles.cont}
       onClick={handleClick}
     >
-      <div className={styles.iconCont}>
-        <FontAwesomeIcon className={styles.icon} icon={icon} />
-      </div>
+      {icon && 
+        <div className={styles.iconCont}>
+          <FontAwesomeIcon className={styles.icon} icon={icon} />
+        </div>
+      }
       <div className={styles.sw}>
         <div className={styles.backSquare}>
           <div className={classNames(styles.label, isRightStyle())}>{labels[0]}</div>

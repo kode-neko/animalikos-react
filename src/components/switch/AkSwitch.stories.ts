@@ -28,3 +28,12 @@ export const SqrSw: Story = {
     onClick: () => {},
   },
 };
+
+export const SqrSwNiIcon: Story = {
+  args: {
+    type: 'square',
+    labels: ['es', 'en'],
+    isRight: true,
+    onClick: () => {},
+  },
+};
