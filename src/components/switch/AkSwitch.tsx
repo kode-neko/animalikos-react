@@ -2,6 +2,7 @@ import {useState} from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import styles from './styles.module.less';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
 
 type AkSwitchProps = {
   type: 'round' | 'square';
@@ -23,18 +24,22 @@ const AkSwitch: React.FunctionComponent<AkSwitchProps> = ({
     setIsRightHere(!isRightHere);
     onClick(!isRightHere);
   };
+  const isRightStyle = () => isRightHere ? styles.right : styles.left;
+  const isLeftStyle = () => isRightHere ? styles.left : styles.right;
   return (
-    <div onClick={handleClick}>
+    <div 
+      className={styles.cont}
+      onClick={handleClick}
+    >
       <div className={styles.iconCont}>
         <FontAwesomeIcon className={styles.icon} icon={icon} />
       </div>
       <div className={styles.sw}>
-        <div className={type === 'square' ? styles.labelsCont : styles.labelsContNone}>
-          <div className={styles.left}>{labels[0]}</div>
-          <div className={styles.right}>{labels[1]}</div>
+        <div className={styles.backSquare}>
+          <div className={classNames(styles.label, isRightStyle())}>{labels[0]}</div>
+          <div className={classNames(styles.label, isLeftStyle())}>{labels[1]}</div>
+          <div className={classNames(styles.swSquare, isRightStyle())}/>
         </div>
-        <div className={styles[type]}/> 
-        <div className={styles[`back${type}`]}/>
       </div>
     </div>
   );

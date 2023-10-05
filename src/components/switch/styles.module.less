@@ -1,0 +1,64 @@
+@import '../../assets/styles/clean.less';
+@import '../../assets/styles/color.less';
+
+.cont {
+   display: flex;
+   cursor: pointer;
+}
+
+.iconCont {
+   margin-right: 6px;
+ .icon {
+    color: @light;
+    font-size: 32px;
+ }
+}
+
+.sw {
+   position: relative;
+   .backSquare {
+      display: flex;
+      background-color: @light;
+      border-radius: 2px;
+      border: 4px solid @light;
+      .label {
+         z-index: 1;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         text-transform: uppercase;
+         color: @main;
+         font-weight: bold;
+         font-size: 20px;
+         height: 24px;
+         width: 32px;
+         &.left {
+            color: @light;
+         }
+         &.right {
+            color: @main;
+         }
+      }
+      .swSquare {
+         position: absolute;
+         z-index: 0;
+         border: 4px solid @light;
+         top: 0;
+         background-color: @main;
+         height: 24px;
+         width: 32px;
+         transition: all .3s;
+         &.left {
+            border-radius: 2px 0 0 2px;
+            left: 0;
+            transition: all .3s;
+         }
+         &.right {
+            border-radius: 0 2px 2px 0;
+            right: 0;
+            transition: all .3s;
+         }
+      }
+      
+   }
+}
