@@ -7,15 +7,43 @@
 }
 
 .iconCont {
+   position: relative;
    margin-right: 6px;
- .icon {
-    color: @light;
-    font-size: 32px;
- }
+   height: 36px;
+   width: 36px;
+   .icon {
+      position: absolute;
+      color: @light;
+      font-size: 32px;
+      opacity: 1;
+      transition: all .3s;
+   }
+   .hide {
+      opacity: 0;
+   }
+}
+
+.backRound {
+   border-radius: 100px;
+   background-color: @light;
+   border: solid 4px @light;
+   height: 28px;
+   width: 64px;
+   .dot {
+      border-radius: 100%;
+      background-color: @main;
+      transition: all .3s;
+      height: 28px;
+      width: 28px;
+   }
+   .dot.right{
+      transform: translateX(36px);
+   }
 }
 
 .sw {
    position: relative;
+
    .backSquare {
       display: flex;
       background-color: @light;

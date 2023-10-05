@@ -1,4 +1,4 @@
-import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 import AkSwitch from './AkSwitch';
 
@@ -33,6 +33,25 @@ export const SqrSwNiIcon: Story = {
   args: {
     type: 'square',
     labels: ['es', 'en'],
+    isRight: true,
+    onClick: () => {},
+  },
+};
+
+export const RoundSwn: Story = {
+  args: {
+    type: 'round',
+    icon: faGlobe,
+    isRight: true,
+    onClick: () => {},
+  },
+};
+
+export const RoundSwnX2: Story = {
+  args: {
+    type: 'round',
+    icon: faSun,
+    iconRight: faMoon,
     isRight: true,
     onClick: () => {},
   },

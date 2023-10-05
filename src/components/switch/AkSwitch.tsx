@@ -7,6 +7,7 @@ import classNames from 'classnames';
 type AkSwitchProps = {
   type: 'round' | 'square';
   icon: IconProp;
+  iconRight: IconProp;
   labels: [string, string];
   isRight: boolean;
   onClick: (isRight: boolean) => void;
@@ -15,6 +16,7 @@ type AkSwitchProps = {
 const AkSwitch: React.FunctionComponent<AkSwitchProps> = ({
   type = 'round',
   icon,
+  iconRight,
   labels,
   isRight,
   onClick,
@@ -31,18 +33,31 @@ const AkSwitch: React.FunctionComponent<AkSwitchProps> = ({
       className={styles.cont}
       onClick={handleClick}
     >
-      {icon && 
+      {icon && !iconRight && 
         <div className={styles.iconCont}>
-          <FontAwesomeIcon className={styles.icon} icon={icon} />
+          <FontAwesomeIcon className={styles.icon} icon={icon as IconProp} />
         </div>
       }
-      <div className={styles.sw}>
-        <div className={styles.backSquare}>
-          <div className={classNames(styles.label, isRightStyle())}>{labels[0]}</div>
-          <div className={classNames(styles.label, isLeftStyle())}>{labels[1]}</div>
-          <div className={classNames(styles.swSquare, isRightStyle())}/>
+      {iconRight && 
+        <div className={styles.iconCont}>
+          <FontAwesomeIcon className={classNames(styles.icon, !isRightHere && styles.hide)} icon={icon} />
+          <FontAwesomeIcon className={classNames(styles.icon, isRightHere && styles.hide)} icon={iconRight} />
         </div>
-      </div>
+      }
+      {
+        type === 'round' ?
+        <div className={styles.backRound}>
+          <div className={classNames(styles.dot, isRightStyle())} />
+        </div> 
+        :
+        <div className={styles.sw}>
+          <div className={styles.backSquare}>
+            <div className={classNames(styles.label, isRightStyle())}>{labels[0]}</div>
+            <div className={classNames(styles.label, isLeftStyle())}>{labels[1]}</div>
+            <div className={classNames(styles.swSquare, isRightStyle())}/>
+          </div>
+        </div>
+      }
     </div>
   );
 };
