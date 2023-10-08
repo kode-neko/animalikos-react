@@ -11,7 +11,6 @@ const meta: Meta<typeof AkFooter> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const NoIconS: Story = {
-  args: {
-  },
+export const Footer: Story = {
+
 };
