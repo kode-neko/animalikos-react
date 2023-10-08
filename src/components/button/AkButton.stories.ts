@@ -9,6 +9,7 @@ const meta: Meta<typeof AkButton> = {
   argTypes: {
     title: { control: 'text' },
     size: { control: 'radio', options: ['s', 'm'] },
+    type: { control: 'radio', options: ['main', 'second', 'reverse'] },
     icon: {}
   },
 };
@@ -22,10 +23,10 @@ export const NoIconS: Story = {
   },
 };
 
-export const NoIconSSecond: Story = {
+export const NoIconSecond: Story = {
   args: {
     title: 'Create',
-    main: false
+    type: 'second',
   },
 };
 
@@ -43,11 +44,19 @@ export const IconS: Story = {
   },
 };
 
-
 export const IconM: Story = {
   args: {
     title: 'Create',
     size: 'm',
+    icon: faCirclePlus
+  },
+};
+
+export const IconReverse: Story = {
+  args: {
+    title: 'Create',
+    size: 'm',
+    type: 'reverse',
     icon: faCirclePlus
   },
 };

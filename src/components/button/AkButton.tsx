@@ -6,19 +6,18 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 type AkButtonProps = {
   title: string;
   icon: IconProp;
-  size: 's' | 'm';
-  main: boolean;
+  size?: 's' | 'm';
+  type?: 'main' | 'second' | 'reverse';
   onClick: () => void;
 }
 
-const AkHeaderPage: React.FunctionComponent<AkButtonProps> = ({title, icon, size = 's', main = true, onClick}: AkButtonProps) => {
+const AkHeaderPage: React.FunctionComponent<AkButtonProps> = ({title, icon, size = 'm', type = 'main', onClick}: AkButtonProps) => {
   const classFinal: Record<string, boolean> = {
     [styles.btn]: true,
     [styles.icon]: !!icon,
     [styles.s]: size === 's',
     [styles.m]: size === 'm',
-    [styles.main]: main,
-    [styles.second]: !main,
+    [styles[type]]: true
   };
   return (
     <button 
