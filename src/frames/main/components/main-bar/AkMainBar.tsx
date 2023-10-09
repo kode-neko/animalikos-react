@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import { faGlobe, faMoon, faPlusCircle, faShareNodes, faSun } from '@fortawesome/free-solid-svg-icons';
 import { AkButton, AkSwitch } from '../../../../components';
 import styles from './styles.module.less';
@@ -21,6 +22,7 @@ const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
   onClickLang,
 }: AkMainBarProps) => {
   const {t} = useTranslation();
+  const [isSocialMenu, setIsSocialMenu] = useState<boolean>(false);
   return (
     <div className={styles.cont}>
       <div className={styles.title}>
@@ -38,15 +40,19 @@ const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
           <div className={styles.btn}>
             <AkIconButton
               icon={faShareNodes}
-              onClick={() => {}}
+              onClick={() => setIsSocialMenu(!isSocialMenu)}
             />
           </div>
-          <div className={styles.menu}>
-            <ul>
+          <div 
+            className={styles.menu}
+            onMouseLeave={() => setIsSocialMenu(false)}
+          >
+            <ul style={{display: isSocialMenu ? 'block' : 'none'}}>
               {socialList.map((social: Social) => 
                 <li 
                   key={social.name}
                   className={styles.opt}
+                  onClick={() => onClickSocial(social.name)}
                 >
                   <FontAwesomeIcon 
                     className={styles.icon} 
