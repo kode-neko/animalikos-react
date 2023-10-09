@@ -1,1 +1,1 @@
-export {default as AkHeaderBar} from './AkHeaderBar';
+export {default as AkMainBar} from './AkMainBar';

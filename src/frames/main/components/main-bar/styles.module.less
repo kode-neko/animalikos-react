@@ -1,0 +1,57 @@
+@import '../../../../assets/styles/fonts.less';
+@import '../../../../assets/styles/color.less';
+
+.cont {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 0 20px;
+  background: @gradient;
+}
+
+.title {
+  flex-grow: 1;
+  font-family: 'Carter One', cursive;
+  font-size: 36px;
+}
+
+.options {
+  flex-basis: min-content;
+  display: flex;
+  align-items: center;
+  gap: 20px
+}
+
+.social {
+  position: relative;
+  .btn {
+    position: relative;
+  }
+  .menu {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    background-color: @main;
+    border-radius: 4px;
+    .opt {
+      cursor: pointer;
+      padding: 10px;
+      font-size: 20px;
+      display: flex;
+      transition: all .3s;
+      &:first-child {
+        border-radius: 4px 4px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 4px 4px;
+      }
+      &:hover {
+        background-color: @main-dark;
+      }
+      .icon{
+        padding-right: 8px;
+      }
+      .label{}
+    }
+  }
+}

@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 
 type AkSwitchProps = {
-  type: 'round' | 'square';
+  type?: 'round' | 'square';
   icon: IconProp;
-  iconRight: IconProp;
-  labels: [string, string];
-  isRight: boolean;
+  iconRight?: IconProp;
+  labels?: [string, string];
+  isRight?: boolean;
   onClick: (isRight: boolean) => void;
 }
 
@@ -18,7 +18,7 @@ const AkSwitch: React.FunctionComponent<AkSwitchProps> = ({
   icon,
   iconRight,
   labels,
-  isRight,
+  isRight=true,
   onClick,
 }: AkSwitchProps) => {
   const [isRightHere, setIsRightHere] = useState<boolean>(isRight);
