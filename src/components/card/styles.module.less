@@ -1,0 +1,67 @@
+@import '../../assets/styles/clean.less';
+@import '../../assets/styles/color.less';
+
+.cont {
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  background-color: @back;
+}
+
+.paddParts {
+  padding: 10px 0;
+}
+
+.borderBottom {
+  border-bottom: 2px solid transparent;
+  background: @back-grad padding-box, @gradient border-box;
+  box-sizing: border-box;
+}
+
+.header {
+  .borderBottom;
+  .paddParts;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+
+  .icon{
+    font-size: 32px;
+    color: @main;
+  }
+  .title {
+    font-size: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.subHeader {
+  .borderBottom;
+  .paddParts;
+  display: flex;
+  gap: 60px;
+}
+
+.desc {
+  .paddParts;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+}
+
+.contDesc {
+  display: flex;
+  flex-direction: column;
+  flex-basis: min-content;
+  .field {
+    font-weight: bold;
+    font-size: 18px;
+    flex-basis: content;
+  }
+}
