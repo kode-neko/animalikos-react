@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './styles.module.less';
 
 type AkOverlayProps = {
@@ -7,8 +8,7 @@ type AkOverlayProps = {
 const AkOverlay: React.FunctionComponent<AkOverlayProps> = ({isVisible}: AkOverlayProps) => {
   return (
     <div
-      style={{display: isVisible ? 'block' : 'none'}}
-      className={styles.cont}
+      className={classNames(styles.cont, isVisible && styles.visible)}
     />
   );
 };

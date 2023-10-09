@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { socialList } from '../../../../globals';
 import { Social } from '../../../../models';
 import { AkIconButton } from '../../../../components/icon-button';
-import { Overlay } from '../../../../components/overlay/AkOverlay.stories';
+import classNames from 'classnames';
 
 type AkMainBarMobileProps = {
   onClickCreate: () => void,
@@ -36,8 +36,7 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
         </div>
       </div>
       <div 
-        style={{display: isSideMenu ? 'block' : 'none'}} 
-        className={styles.sideMenu}
+        className={classNames(styles.sideMenu, isSideMenu && styles.visible)}
       >
         <div 
           className={styles.close}
