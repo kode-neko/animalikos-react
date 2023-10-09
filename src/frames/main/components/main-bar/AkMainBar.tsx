@@ -4,7 +4,8 @@ import styles from './styles.module.less';
 import { useTranslation } from 'react-i18next';
 import { AkIconButton } from '../../../../components/icon-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { socialList } from '../../../../globals';
+import { Social } from '../../../../models';
 
 type AkMainBarProps = {
   onClickCreate: () => void,
@@ -42,14 +43,22 @@ const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
           </div>
           <div className={styles.menu}>
             <ul>
-              <li className={styles.opt}>
-                <FontAwesomeIcon className={styles.icon} icon={faTwitter} />
-                <div className={styles.icon}>twitter</div>
-              </li>
-              <li className={styles.opt}>
-                <FontAwesomeIcon className={styles.icon} icon={faGithub} />
-                <div className={styles.icon}>github</div>
-              </li>
+              {socialList.map((social: Social) => 
+                <li 
+                  key={social.name}
+                  className={styles.opt}
+                >
+                  <FontAwesomeIcon 
+                    className={styles.icon} 
+                    icon={social.icon} 
+                  />
+                  <div 
+                    className={styles.icon}
+                  >
+                    {t(`social.${social.name}`)}
+                  </div>
+                </li>
+              )}
             </ul>
           </div>
         </div>
