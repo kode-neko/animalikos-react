@@ -4,7 +4,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 type AkIconButtonProps = {
   icon: IconProp;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const AkIconButton: React.FunctionComponent<AkIconButtonProps> = ({icon, onClick}: AkIconButtonProps) => {

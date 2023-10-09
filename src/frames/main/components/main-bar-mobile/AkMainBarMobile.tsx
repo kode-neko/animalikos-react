@@ -1,12 +1,13 @@
 import {useState} from 'react';
-import { faBars, faGlobe, faMoon, faPlusCircle, faSun } from '@fortawesome/free-solid-svg-icons';
-import { AkButton, AkSwitch } from '../../../../components';
+import { faBars, faGlobe, faMoon, faPlusCircle, faSun, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { AkButton, AkOverlay, AkSwitch } from '../../../../components';
 import styles from './styles.module.less';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { socialList } from '../../../../globals';
 import { Social } from '../../../../models';
 import { AkIconButton } from '../../../../components/icon-button';
+import { Overlay } from '../../../../components/overlay/AkOverlay.stories';
 
 type AkMainBarMobileProps = {
   onClickCreate: () => void,
@@ -38,6 +39,15 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
         style={{display: isSideMenu ? 'block' : 'none'}} 
         className={styles.sideMenu}
       >
+        <div 
+          className={styles.close}
+          onClick={() => setIsSideMenu(false)}
+        >
+          <AkIconButton
+            icon={faXmark}
+          />
+          <div>{t('labels.close')}</div>
+        </div>
         <ul className={styles.block}>
           <li>
             <AkButton
@@ -53,7 +63,7 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
           {socialList.map((social: Social) => 
             <li 
               key={social.name}
-              className={styles.opt}
+              className={styles.social}
               onClick={() => onClickSocial(social.name)}
             >
               <FontAwesomeIcon 
@@ -88,6 +98,9 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
           </li>
         </ul>
       </div>
+      <AkOverlay
+        isVisible={isSideMenu}
+      />
     </>
   );
 };

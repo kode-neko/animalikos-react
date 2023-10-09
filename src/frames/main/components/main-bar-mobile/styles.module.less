@@ -14,3 +14,46 @@
     font-size: 36px;
   }
 }
+
+.sideMenu {
+  position: fixed;
+  z-index: 11;
+  width: 260px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: @gradient;
+  padding: 20px;
+
+  .ele {
+    font-size: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: all .2s;
+
+    &:hover {
+      cursor: pointer;
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .close {
+    .ele;
+    background-color: @main;
+    margin-bottom: 20px;
+  }
+
+  .social {
+    .ele
+  }
+
+  .block {
+    padding: 10px 0;
+    border-bottom: 2px solid @main;
+
+    li {
+      padding: 10px 0;
+    }
+  }
+}
