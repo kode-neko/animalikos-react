@@ -1,0 +1,62 @@
+@import '../../assets/styles/clean.less';
+@import '../../assets/styles/color.less';
+
+.cont {
+  position: fixed;
+  z-index: 12;
+  width: 312px;
+  background-color: @back;
+  border-radius: 4px;
+  left: calc(50% - (312px/2));
+  margin-top: 46px;
+  box-shadow: @shadow;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s linear, visibility 0.3s linear;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: @gradient;
+  border-radius: 4px 4px 0 0;
+
+  .title{
+    flex-grow: 1;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .close {
+    font-size: 20px;
+    cursor: pointer
+  }
+}
+
+.body {
+  padding: 10px 20px;
+  text-align: center;
+
+  .icon {
+    font-size: 64px;
+    margin-top: 40px;
+  }
+
+  .msg {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+}
+
+.footer {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+}
