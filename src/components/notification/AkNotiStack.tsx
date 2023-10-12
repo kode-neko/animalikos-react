@@ -29,7 +29,7 @@ const AkNotiStack: React.FunctionComponent = () => {
     setNotiList([...notiList, {...noti, id}]);
     setTimeout(() => {
       setNotiList(notiList.filter((n: AkNoti) => n.id === id));
-    }, 5000);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const AkNotiStack: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div className={styles.cont}>
+    <div className={styles.stack}>
       {notiList.map((n: AkNoti) => <AkNotiTag key={n.id} noti={n}/>)}
     </div>
   );

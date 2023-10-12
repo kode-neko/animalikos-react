@@ -1,6 +1,16 @@
 @import '../../assets/styles/clean.less';
 @import '../../assets/styles/color.less';
 
+.stack {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
 .tag {
   padding: 20px;
   background: @gradient;
@@ -10,11 +20,25 @@
   gap: 10px;
   border-radius: 4px;
 
+  transform: translateX();
+  animation-name: ani;
+  animation-duration: 1s;
+  animation-timing-function: ease;
+
   .icon {
     font-size: 32px;
   }
 
   .msg {
     font-size: 16px;
+  }
+}
+
+@keyframes ani {
+  from {
+    transform: translateX(360px);
+  }
+  to {
+    transform: translateX(0px);
   }
 }

@@ -3,8 +3,8 @@ import { AkNoti } from "./types";
 
 const notiHub: AkNotiHub = AkNotiHub.getInstance();
 
-const useAkNoti: () => (msg: AkNoti) => void = () => {
-  return notiHub.sendMessage;
+const useAkNoti: (msg: AkNoti) => void = (msg: AkNoti) => {
+  notiHub.sendMessage(msg);
 };
 
 export default useAkNoti;
