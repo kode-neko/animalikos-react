@@ -1,12 +1,11 @@
-import { useTranslation } from "react-i18next";
 import styles from './styles.module.less';
+import { main } from "../../../../globals";
 
 const AkFooter: React.FunctionComponent = () => {
-  const {t} = useTranslation();
   return (
     <div className={styles.cont}>
       <span className={styles.text}>
-        {t('credits')}
+        {main.credits}
       </span>
     </div>
   );

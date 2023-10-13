@@ -5,7 +5,7 @@ import styles from './styles.module.less';
 import { useTranslation } from 'react-i18next';
 import { AkIconButton } from '../../../../components/icon-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { socialList } from '../../../../globals';
+import { main, socialList } from '../../../../globals';
 import { Social } from '../../../../models';
 
 type AkMainBarProps = {
@@ -26,7 +26,7 @@ const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
   return (
     <div className={styles.cont}>
       <div className={styles.title}>
-        {t('mainTitle')}
+        {main.title}
       </div>
       <div className={styles.options}>
         <AkButton
