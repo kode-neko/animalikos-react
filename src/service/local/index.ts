@@ -1,0 +1,1 @@
+export {default as AnimalLocal} from './AnimalLocal';
