@@ -4,7 +4,7 @@ import { AnimalRest } from "./rest";
 
 const {
   VITE_SERVICE_TYPE
-} = process.env;
+} = import.meta.env;
 
 function animalServiceMng(): IAnimalService {
   if(VITE_SERVICE_TYPE === 'rest')

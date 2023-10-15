@@ -4,7 +4,7 @@ import IAnimalService from "../IAnimalService";
 
 const {
   VITE_ANIMAL_SERVICE
-} = process.env;
+} = import.meta.env;
 
 class AnimalLocal implements IAnimalService {
 
