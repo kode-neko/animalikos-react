@@ -1,0 +1,58 @@
+@import '../../assets/styles/clean.less';
+@import '../../assets/styles/color.less';
+
+.btn {
+  color: @light;
+  border: none;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 10px;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    transform: translate(2px, -2px);
+  }
+}
+
+.main {
+  background-color: @main;
+}
+
+.second {
+  background-color: @main-dark;
+}
+
+.reverse {
+  background-color: @light;
+  color: @main;
+}
+
+.s {
+  height: 24px;
+  border-radius: 4px;
+
+  .icon {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+  .label {
+    font-size: 16px;
+  }
+}
+
+.m {
+  height: 32px;
+  border-radius: 4px;
+  font-size: 20px;
+
+  .icon {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  .label {
+    font-size: 20px;
+  }
+}
