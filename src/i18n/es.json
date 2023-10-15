@@ -8,10 +8,14 @@
     "age": "Edad",
     "sex": "Sexo",
     "enter": "Entrada",
-    "notFound": "No Encontrado"
+    "notFound": "No Encontrado",
+    "loadMore": "Cargar Más"
+  },
+  "title": {
+    "empty": "No hay resultados"
   },
   "desc": {
-    "notFound": "No hay resultados. Intentan con otro nombre"
+    "empty": "No se han obtenido animales. Inténtelo más tarde"
   }
 }
 

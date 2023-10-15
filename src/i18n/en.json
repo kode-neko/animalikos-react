@@ -8,9 +8,13 @@
     "age": "Age",
     "sex": "Gender",
     "enter": "Enter",
-    "notFound": "Not Found"
+    "notFound": "Not Found",
+    "loadMore": "Load More"
+  },
+  "title": {
+    "empty": "No hay resultados"
   },
   "desc": {
-    "notFound": "There is no results. Try other animal name."
+    "empty": "No se han obtenido animales. Inténtelo más tarde"
   }
 }
