@@ -1,1 +1,12 @@
-{}
+{
+  "labels": {
+    "create": "Create",
+    "search": "Search",
+    "all": "All",
+    "delete": "Delete",
+    "edit": "Edit",
+    "age": "Age",
+    "sex": "Gender",
+    "enter": "Enter"
+  }
+}

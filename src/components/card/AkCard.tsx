@@ -24,8 +24,8 @@ const AkInfoCard: React.FunctionComponent<AkInfoCardProps> = ({field, value}: Ak
         {value}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const AkCard: React.FunctionComponent<AkCardProps> = ({animal}: AkCardProps) => {
   const {t} = useTranslation();
@@ -35,6 +35,7 @@ const AkCard: React.FunctionComponent<AkCardProps> = ({animal}: AkCardProps) => 
         <FontAwesomeIcon className={styles.icon} icon={faPaw} />
         <h2 className={styles.title}>{animal.name}</h2>
       </div>
+      <div className={styles.divider} />
       <div className={styles.subHeader}>
         <AkInfoCard
           field={t(`labels.age`)}
@@ -49,8 +50,9 @@ const AkCard: React.FunctionComponent<AkCardProps> = ({animal}: AkCardProps) => 
           value={animal.enter}
         />
       </div>
+      <div className={styles.divider} />
       <div className={styles.desc}>
-        {t(`labels.desc`)}
+        {animal.desc}
       </div>
       <div className={styles.actions}>
         <AkButton

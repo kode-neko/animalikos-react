@@ -3,6 +3,7 @@ import { Animal } from '../../models';
 import { AkSearch } from './components';
 import styles from './styles.module.less';
 import { animalServiceMng } from '../../service';
+import { AkCard } from '../../components';
 
 const AkHome: React.FunctionComponent = () => {
 
@@ -24,7 +25,11 @@ const AkHome: React.FunctionComponent = () => {
         />
       </div>
       <div className={styles.list}>
-        {animalList.map((a: Animal) => <div key={a._id}>{a.name}</div>)}
+        {animalList.map((a: Animal) => 
+          <div key={a._id} className={styles.card}>
+            <AkCard animal={a} />
+          </div>
+        )}
       </div>
     </div>
   );

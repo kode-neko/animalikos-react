@@ -1,3 +1,12 @@
 {
-  
+  "labels": {
+    "create": "Crear",
+    "search": "Buscar",
+    "all": "Todo",
+    "delete": "Borrar",
+    "edit": "Editar",
+    "age": "Edad",
+    "sex": "Sexo",
+    "enter": "Entrada"
+  }
 }
