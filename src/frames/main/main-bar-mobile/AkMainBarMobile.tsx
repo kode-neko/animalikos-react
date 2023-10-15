@@ -1,27 +1,23 @@
 import {useState} from 'react';
 import { faBars, faGlobe, faMoon, faPlusCircle, faSun, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { AkButton, AkOverlay, AkSwitch } from '../../../../components';
+import { AkButton, AkOverlay, AkSwitch } from '../../../components';
 import styles from './styles.module.less';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { socialList } from '../../../../globals';
-import { Social } from '../../../../models';
-import { AkIconButton } from '../../../../components/icon-button';
+import { socialList } from '../../../globals';
+import { Social } from '../../../models';
+import { AkIconButton } from '../../../components/icon-button';
 import classNames from 'classnames';
+import { AkMainBarProps } from '../types';
 
-type AkMainBarMobileProps = {
-  onClickCreate: () => void,
-  onClickSocial: (social: string) => void,
-  onClickTheme: (isRight: boolean) => void,
-  onClickLang: (isRight: boolean) => void,
-}
-
-const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
+const AkMainBarMobile: React.FunctionComponent<AkMainBarProps> = ({
+  theme,
+  lang,
   onClickCreate,
   onClickSocial,
   onClickTheme,
   onClickLang,
-}: AkMainBarMobileProps) => {
+}: AkMainBarProps) => {
   const {t} = useTranslation();
   const [isSideMenu, setIsSideMenu] = useState<boolean>(false);
   return (
@@ -82,7 +78,7 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
             <AkSwitch    
               icon={faSun}
               iconRight={faMoon}
-              isRight={true}
+              isRight={theme === 'light'}
               onClick={onClickTheme}
             />
           </li>
@@ -91,8 +87,8 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarMobileProps> = ({
               type='square'
               icon={faGlobe}
               labels={['en', 'es']}
-              isRight={true}
-              onClick={onClickLang}
+              isRight={lang === 'es'}
+              onClick={(isRight: boolean) => onClickLang(isRight ? 'es' : 'en')}
             />
           </li>
         </ul>

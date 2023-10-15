@@ -1,21 +1,17 @@
 import {useState} from 'react';
 import { faGlobe, faMoon, faPlusCircle, faShareNodes, faSun } from '@fortawesome/free-solid-svg-icons';
-import { AkButton, AkSwitch } from '../../../../components';
+import { AkButton, AkSwitch } from '../../../components';
 import styles from './styles.module.less';
 import { useTranslation } from 'react-i18next';
-import { AkIconButton } from '../../../../components/icon-button';
+import { AkIconButton } from '../../../components/icon-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { main, socialList } from '../../../../globals';
-import { Social } from '../../../../models';
-
-type AkMainBarProps = {
-  onClickCreate: () => void,
-  onClickSocial: (social: string) => void,
-  onClickTheme: (isRight: boolean) => void,
-  onClickLang: (isRight: boolean) => void,
-}
+import { main, socialList } from '../../../globals';
+import { Social } from '../../../models';
+import { AkMainBarProps } from '../types';
 
 const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
+  theme,
+  lang,
   onClickCreate,
   onClickSocial,
   onClickTheme,
@@ -71,15 +67,15 @@ const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
         <AkSwitch    
           icon={faSun}
           iconRight={faMoon}
-          isRight={true}
+          isRight={theme === 'light'}
           onClick={onClickTheme}
         />
         <AkSwitch
           type='square'
           icon={faGlobe}
           labels={['en', 'es']}
-          isRight={true}
-          onClick={onClickLang}
+          isRight={lang === 'es'}
+          onClick={(isRight: boolean) => onClickLang(isRight ? 'es' : 'en')}
         />
       </div>
     </div>

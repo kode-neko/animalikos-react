@@ -1,5 +1,5 @@
 import styles from './styles.module.less';
-import { main } from "../../../../globals";
+import { main } from "../../../globals";
 
 const AkFooter: React.FunctionComponent = () => {
   return (
