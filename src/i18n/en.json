@@ -7,6 +7,10 @@
     "edit": "Edit",
     "age": "Age",
     "sex": "Gender",
-    "enter": "Enter"
+    "enter": "Enter",
+    "notFound": "Not Found"
+  },
+  "desc": {
+    "notFound": "There is no results. Try other animal name."
   }
 }

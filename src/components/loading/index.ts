@@ -1,1 +1,1 @@
-export {default as AkButton} from './AkButton';
+export {default as AkLoading} from './AkLoading';

@@ -7,6 +7,11 @@
     "edit": "Editar",
     "age": "Edad",
     "sex": "Sexo",
-    "enter": "Entrada"
+    "enter": "Entrada",
+    "notFound": "No Encontrado"
+  },
+  "desc": {
+    "notFound": "No hay resultados. Intentan con otro nombre"
   }
 }
+
