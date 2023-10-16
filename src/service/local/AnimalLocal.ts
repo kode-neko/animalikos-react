@@ -38,7 +38,7 @@ class AnimalLocal implements IAnimalService {
   delete(id: string): Promise<boolean> {
     const finded: boolean = !!list.find((a:Animal) => a._id === id);
     if(finded) 
-      list = list.filter((a: Animal) => a._id === id);
+      list = list.filter((a: Animal) => a._id !== id);
     return Promise.resolve(finded);
   }
 

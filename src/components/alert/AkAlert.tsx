@@ -9,7 +9,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 type AkAlertAction = {
   label: string;
   type: 'main' | 'second'
-  onClick: () => {}
+  onClick: () => void
 }
 
 type AkAlertProps = {

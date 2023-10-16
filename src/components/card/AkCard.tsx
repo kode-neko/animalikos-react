@@ -6,7 +6,9 @@ import { useTranslation } from "react-i18next";
 import { AkButton } from '../button';
 
 type AkCardProps = {
-  animal: Animal
+  animal: Animal,
+  onClickEdit: (animal: Animal) => void,
+  onClickDel: (_id: string) => void,
 }
 
 type AkInfoCardProps = {
@@ -27,7 +29,7 @@ const AkInfoCard: React.FunctionComponent<AkInfoCardProps> = ({field, value}: Ak
   );
 };
 
-const AkCard: React.FunctionComponent<AkCardProps> = ({animal}: AkCardProps) => {
+const AkCard: React.FunctionComponent<AkCardProps> = ({animal, onClickEdit, onClickDel}: AkCardProps) => {
   const {t} = useTranslation();
   return (
     <div className={styles.cont}>
@@ -60,14 +62,14 @@ const AkCard: React.FunctionComponent<AkCardProps> = ({animal}: AkCardProps) => 
           icon={faTrash}
           size='m'
           type='main'
-          onClick={() => {}}
+          onClick={() => onClickDel(animal._id as string)}
         />
         <AkButton
           title={t(`labels.edit`)}
           icon={faPen}
           size='m'
           type='second'
-          onClick={() => {}}
+          onClick={() => onClickEdit(animal)}
         />
       </div>
     </div>
