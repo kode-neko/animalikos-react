@@ -3,16 +3,23 @@ import { useTranslation } from "react-i18next";
 import { AkFormAnimal, AkHeaderPage } from "../../components";
 import styles from './styles.module.less';
 import { Animal } from "../../models";
-import { useParams } from "react-router-dom";
+import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
 import { animalServiceMng } from "../../service";
 
 const AkEdit: React.FunctionComponent = () => {
   const {t} = useTranslation();
+  const navigate: NavigateFunction = useNavigate();
+
   const {id} = useParams();
   const [animal, setAnimal] = useState<Animal>();
 
   const handleSave: (edited: Animal) => void = (edited: Animal) => {
-    console.log(edited);
+    animalServiceMng().edit({...edited, _id: id})
+      .then(() => { 
+        console.log('edited'); 
+        navigate('/');
+      })
+      .catch(() => console.log('error'));
   };
 
   useEffect(() => {
