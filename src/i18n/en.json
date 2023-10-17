@@ -19,10 +19,14 @@
     "male": "Male",
     "cat": "Cat",
     "dog": "Dog",
-    "cow": "Cow"
+    "cow": "Cow",
+    "save": "Save",
+    "back": "Back"
   },
   "title": {
-    "empty": "No hay resultados"
+    "empty": "No hay resultados",
+    "edit": "Edit",
+    "create": "Create"
   },
   "desc": {
     "empty": "No se han obtenido animales. Inténtelo más tarde"

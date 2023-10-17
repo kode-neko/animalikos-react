@@ -8,6 +8,8 @@ import dayjs from 'dayjs';
 import styles from './styles.module.less';
 import { AkButton } from "../button";
 
+type AkFormAnimal = {}
+
 const AkFormAnimal: React.FunctionComponent = () => {
   const {t} = useTranslation();
   // eslint-disable-next-line @typescript-eslint/typedef

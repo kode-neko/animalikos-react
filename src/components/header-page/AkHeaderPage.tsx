@@ -1,22 +1,27 @@
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './styles.module.less';
+import { useTranslation } from "react-i18next";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 type AkHeaderPageProps = {
-  back: string;
   title: string
 };
 
-const AkHeaderPage: React.FunctionComponent<AkHeaderPageProps> = ({back, title}: AkHeaderPageProps) => {
+const AkHeaderPage: React.FunctionComponent<AkHeaderPageProps> = ({title}: AkHeaderPageProps) => {
+  const {t} = useTranslation();
+  const navigate: NavigateFunction = useNavigate();
   return (
     <div className={styles.cont}>
       <div className={styles.left}>
-        <FontAwesomeIcon 
-          className={styles.arrow} 
-          icon={faAnglesLeft} 
-        />
-        <div className={styles.back}>
-          {back}
+        <div className={styles.back} onClick={() => navigate(-1)}>
+          <FontAwesomeIcon 
+            className={styles.arrow} 
+            icon={faAnglesLeft} 
+          />
+          <div className={styles.label}>
+            {t('labels.back')}
+          </div>
         </div>
       </div>
       <div className={styles.right}>
