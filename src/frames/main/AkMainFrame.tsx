@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { NavigateFunction, Outlet, useNavigate } from 'react-router-dom';
 import { AkMainBar } from './main-bar';
 import { AkMainBarMobile } from './main-bar-mobile';
 import styles from './styles.module.less';
@@ -8,6 +8,7 @@ import { typeLang } from './types';
 
 export const MenuFrame: React.FunctionComponent = () => {
   const {i18n} = useTranslation();
+  const navigate: NavigateFunction = useNavigate();
   const handleLang: (lang: string) => void = (lang: string) => {
     i18n.changeLanguage(lang);
   };
@@ -18,7 +19,7 @@ export const MenuFrame: React.FunctionComponent = () => {
         <AkMainBar
           theme='dark'
           lang={i18n.language as typeLang}
-          onClickCreate={()=>{}}
+          onClickCreate={()=> navigate('/create')}
           onClickSocial={()=>{}}
           onClickTheme={()=>{}}
           onClickLang={handleLang}
@@ -28,7 +29,7 @@ export const MenuFrame: React.FunctionComponent = () => {
         <AkMainBarMobile
           theme='dark'
           lang={i18n.language as typeLang}
-          onClickCreate={()=>{}}
+          onClickCreate={()=> navigate('/create')}
           onClickSocial={()=>{}}
           onClickTheme={()=>{}}
           onClickLang={handleLang}
