@@ -2,21 +2,22 @@ import classNames from 'classnames';
 import styles from './styles.module.less';
 
 type AkInputProps = {
-  value: string,
-  placeholder?: string;
+  placeholder?: string,
   size?: 's' | 'm',
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: string,
+  name: string,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onBlur: (event: React.FocusEvent<HTMLInputElement>) => void,
 }
 
-const AkInput: React.FunctionComponent<AkInputProps> = ({value, placeholder = '', size = 'm', onChange}: AkInputProps) => {
+const AkInput: React.FunctionComponent<AkInputProps> = ({placeholder = '', size = 'm', ...props}: AkInputProps) => {
   return (
     <input 
       className={classNames(styles.input, styles[size])}
       placeholder={placeholder}
-      value={value}
-      onChange={onChange}
+      {...props}
     />
   );
-}
+};
 
 export default AkInput;

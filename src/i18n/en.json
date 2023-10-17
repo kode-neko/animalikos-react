@@ -9,12 +9,27 @@
     "sex": "Gender",
     "enter": "Enter",
     "notFound": "Not Found",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "name": "Name",
+    "species": "Species",
+    "breed": "Breed",
+    "bday": "Birthday",
+    "desc": "Description",
+    "female": "Female",
+    "male": "Male",
+    "cat": "Cat",
+    "dog": "Dog",
+    "cow": "Cow"
   },
   "title": {
     "empty": "No hay resultados"
   },
   "desc": {
     "empty": "No se han obtenido animales. Inténtelo más tarde"
+  },
+  "placeH": {
+    "name": "",
+    "breed": "",
+    "desc": "A description of the animal..."
   }
 }

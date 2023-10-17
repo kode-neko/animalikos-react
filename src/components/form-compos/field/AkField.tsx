@@ -6,7 +6,6 @@ type AkFieldProps = {
 };
 
 const AkField: React.FunctionComponent<React.PropsWithChildren<AkFieldProps>> = ({title, hint, children}: React.PropsWithChildren<AkFieldProps>) => {
-  console.log(children)
   return (
     <div className={styles.cont}>
       <div className={styles.title}>

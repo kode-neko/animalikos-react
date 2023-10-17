@@ -1,6 +1,8 @@
+import { AkFormAnimal } from "../../components";
+
 const AkEdit: React.FunctionComponent = () => {
   return (
-    <div>AkEdit</div>
+    <div><AkFormAnimal /></div>
   );
 };
 

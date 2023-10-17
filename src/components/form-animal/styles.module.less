@@ -1,0 +1,42 @@
+.name {
+  grid-area: name;
+}
+
+.species {
+  grid-area: species;
+}
+
+.sex {
+  grid-area: sex;
+}
+
+.breed {
+  grid-area: breed;
+}
+
+.bday {
+  grid-area: bday;
+}
+
+.enter {
+  grid-area: enter;
+}
+
+.desc {
+  grid-area: desc;
+}
+
+.cont {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "name name"
+    "species sex"
+    "breed breed"
+    "bday enter"
+    "desc desc";
+  grid-gap: 20px;
+}
+

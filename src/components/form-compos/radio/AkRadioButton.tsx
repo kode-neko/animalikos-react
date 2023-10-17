@@ -2,21 +2,21 @@ import styles from './styles.module.less';
 
 type AkRadioButtonProps = {
   label: string,
-  value: string,
   checked: boolean,
-  onChange: () => void
+  value: string,
+  name: string,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onBlur: (event: React.FocusEvent<HTMLInputElement>) => void,
 };
 
-const AkRadioButton: React.FunctionComponent<AkRadioButtonProps> = ({label, value, checked, onChange}) => {
+const AkRadioButton: React.FunctionComponent<AkRadioButtonProps> = ({label, value, ...props}: AkRadioButtonProps) => {
   return (
     <div className={styles.cont}>
       <input
         className={styles.radio}
         type="radio"
-        id={value} 
-        value={value} 
-        checked={checked} 
-        onChange={onChange}
+        value={value}
+        {...props}
       />
       <div className={styles.dotChecked} />
       <div className={styles.dot} />

@@ -3,12 +3,14 @@ import styles from './styles.module.less';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 type AkSelectProps = {
-  values: {[key: string]: string},
+  values: {label: string, value: string}[],
   selected: string;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+  name: string,
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
+  onBlur: (event: React.FocusEvent<HTMLSelectElement>) => void
 }
 
-const AkSelect: React.FunctionComponent<AkSelectProps> = ({values, selected, onChange}: AkSelectProps) => {
+const AkSelect: React.FunctionComponent<AkSelectProps> = ({values, selected, ...props}: AkSelectProps) => {
   return (
     <div className={styles.cont}>
       <div className={styles.arrow}>
@@ -16,21 +18,20 @@ const AkSelect: React.FunctionComponent<AkSelectProps> = ({values, selected, onC
       </div>
       <select 
         className={styles.dropdown}
-        onChange={onChange}
+        value={selected}
+        {...props}
       >
-        {Object.keys(values).map((key: string) => 
+        {values.map((opt: {label: string, value: string}) => 
           <option
             className={styles.option}
-            selected={selected === key}
-            key={key} 
-            value={key}
+            key={opt.value} 
           >
-            {values[key]}
+            {opt.label}
           </option>
         )}
       </select>
     </div>
   );
-}
+};
 
 export default AkSelect;

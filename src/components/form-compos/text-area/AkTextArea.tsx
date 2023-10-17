@@ -1,21 +1,20 @@
 import styles from './styles.module.less';
 
 type AkTextAreaProps = {
+  placeholder?: string,
   value: string,
-  placeholder: string;
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
+  name: string,
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void,
+  onBlur: (event: React.FocusEvent<HTMLTextAreaElement>) => void
 }
 
-const AkTextArea: React.FunctionComponent<AkTextAreaProps> = ({value, placeholder, onChange}: AkTextAreaProps) => {
+const AkTextArea: React.FunctionComponent<AkTextAreaProps> = (props: AkTextAreaProps) => {
   return (
     <textarea 
       className={styles.textArea}
-      placeholder={placeholder}
-      onChange={onChange}
-    >
-      {value}
-    </textarea>
+      {...props}
+    />
   );
-}
+};
 
 export default AkTextArea;

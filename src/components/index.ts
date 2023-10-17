@@ -5,3 +5,4 @@ export {AkSwitch} from './switch';
 export {AkOverlay} from './overlay';
 export {AkLoading} from './loading';
 export {AkMsgPage} from './msg-page';
+export {AkFormAnimal} from './form-animal';
