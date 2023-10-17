@@ -35,6 +35,10 @@
     "name": "",
     "breed": "",
     "desc": "Una descripción del animal..."
+  },
+  "error": {
+    "maxStr": "Elm tamaño del campo es de {{size}}",
+    "required": "El campo es requerido"
   }
 }
 

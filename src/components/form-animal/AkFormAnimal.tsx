@@ -4,37 +4,45 @@ import { AkInput } from "../form-compos/input";
 import { Animal, EnumSex, EnumSpecies } from "../../models";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import dayjs from 'dayjs';
 import styles from './styles.module.less';
 import { AkButton } from "../button";
 
-type AkFormAnimal = {}
+type AkFormAnimalProps = {
+  animal: Animal,
+  onSave: (animal: Animal) => void
+}
 
-const AkFormAnimal: React.FunctionComponent = () => {
+const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSave}: AkFormAnimalProps) => {
   const {t} = useTranslation();
   // eslint-disable-next-line @typescript-eslint/typedef
   const schema = yup.object<Animal>({
-    name: yup.string().max(30, t('error.maxStr', '30')).required(),
-    species: yup.mixed<EnumSpecies>().oneOf(Object.values(EnumSpecies)).required(),
-    sex: yup.mixed<EnumSex>().oneOf(Object.values(EnumSex)).required(),
-    breed: yup.string().max(50, t('error.maxStr', '50')).required(),
-    bday: yup.string(),
-    enter: yup.string(),
-    desc: yup.string().max(150, t('error.maxStr', '150')).required(),
+    name: yup.string()
+      .max(30, t('error.maxStr', {size: '30'}))
+      .required(t('error.required')),
+    species: yup.mixed<EnumSpecies>()
+      .oneOf(Object.values(EnumSpecies))
+      .required(t('error.required')),
+    sex: yup.mixed<EnumSex>()
+      .oneOf(Object.values(EnumSex))
+      .required(t('error.required')),
+    breed: yup.string()
+      .max(50, t('error.maxStr', {size: '50'}))
+      .required(t('error.required')),
+    bday: yup.string()
+      .required(t('error.required')),
+    enter: yup.string()
+      .required(t('error.required')),
+    desc: yup.string()
+      .max(150, t('error.maxStr', {size: '150'}))
+      .required(t('error.required')),
   });
   // eslint-disable-next-line @typescript-eslint/typedef
   const formik = useFormik({
     validationSchema: schema,
-    initialValues: {
-      name: '',
-      species: EnumSpecies.Cat,
-      sex: EnumSex.Female,
-      breed: '',
-      bday: dayjs().toISOString(),
-      enter: dayjs().toISOString(),
-      desc: '',
-    },
-    onSubmit: (a: Animal) => console.log(a)
+    initialValues: animal,
+    onSubmit: (a: Animal) => {
+      onSave(a);
+    }
   });
   // eslint-disable-next-line @typescript-eslint/typedef
   const injectFormik = (field: keyof Animal) => ({
@@ -44,16 +52,15 @@ const AkFormAnimal: React.FunctionComponent = () => {
     onBlur: formik.handleBlur
   });
 
+  const msgFormik: (field: keyof Animal) => string = (field: keyof Animal): string => ((formik.touched[field] && formik.errors[field]) as string);
+
   return (
     <div className={styles.cont} >
-      <form 
-        className={styles.form} 
-        onSubmit={formik.handleSubmit}
-      >
+      <form className={styles.form}>
         <div className={styles.name}>
           <AkField
             title={t('labels.name')}
-            hint={t('hint.name')}
+            hint={msgFormik('name')}
           >
             <AkInput
               placeholder={t('placeH.name')}
@@ -64,7 +71,7 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <div className={styles.species}>
           <AkField
             title={t('labels.species')}
-            hint={t('hint.species')}
+            hint={msgFormik('species')}
           >
             <AkSelect
               values={Object.values(EnumSpecies).map((s: string) => ({label: t(`labels.${s}`), value: s}))}
@@ -76,7 +83,7 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <div className={styles.sex}>
           <AkField
             title={t('labels.sex')}
-            hint={t('hint.sex')}
+            hint={msgFormik('sex')}
           >
             <AkRadioButton
               label={t(`labels.${EnumSex.Female}`)}
@@ -93,7 +100,7 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <div className={styles.breed}>
           <AkField
             title={t('labels.breed')}
-            hint={t('hint.breed')}
+            hint={msgFormik('breed')}
           >
             <AkInput
               placeholder={t('placeH.breed')}
@@ -104,7 +111,7 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <div className={styles.bday}>
           <AkField
             title={t('labels.bday')}
-            hint={t('hint.bday')}
+            hint={msgFormik('bday')}
           >
             <AkInput
               placeholder={t('placeH.bday')}
@@ -115,7 +122,7 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <div className={styles.enter}>
           <AkField
             title={t('labels.enter')}
-            hint={t('hint.enter')}
+            hint={msgFormik('enter')}
           >
             <AkInput
               placeholder={t('placeH.enter')}
@@ -126,7 +133,7 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <div className={styles.desc}>
           <AkField
             title={t('labels.desc')}
-            hint={t('hint.desc')}
+            hint={msgFormik('desc')}
           >
             <AkTextArea
               placeholder={t('placeH.desc')}
@@ -139,7 +146,10 @@ const AkFormAnimal: React.FunctionComponent = () => {
         <AkButton
           title={t('labels.save')}
           btnType="submit"
-          onClick={() => {}}
+          onClick={() => {
+            console.log('save');
+            formik.handleSubmit();          
+          }}
         />
       </div>
     </div>

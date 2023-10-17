@@ -15,13 +15,20 @@
 }
 
 .back{
-  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  transition: all .3s;
   .arrow {
     color: @main;
     height: 16px;
   }
   .label {
     font-size: 20px;
+  }
+  &:hover {
+    cursor: pointer;
+    transform: translate(2px, -2px);
   }
 }
 

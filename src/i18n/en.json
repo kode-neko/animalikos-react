@@ -35,5 +35,9 @@
     "name": "",
     "breed": "",
     "desc": "A description of the animal..."
+  },
+  "error": {
+    "maxStr": "The field length is {{size}}",
+    "required": "The field is required"
   }
 }
