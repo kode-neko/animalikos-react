@@ -8,10 +8,11 @@ type AkButtonProps = {
   icon?: IconProp;
   size?: 's' | 'm';
   type?: 'main' | 'second' | 'reverse';
+  btnType?:"button" | "submit"
   onClick: () => void;
 }
 
-const AkButtonPage: React.FunctionComponent<AkButtonProps> = ({title, icon, size = 'm', type = 'main', onClick}: AkButtonProps) => {
+const AkButtonPage: React.FunctionComponent<AkButtonProps> = ({title, icon, size = 'm', type = 'main', btnType="button", onClick}: AkButtonProps) => {
   const classFinal: Record<string, boolean> = {
     [styles.btn]: true,
     [styles.icon]: !!icon,
@@ -23,6 +24,7 @@ const AkButtonPage: React.FunctionComponent<AkButtonProps> = ({title, icon, size
     <button 
       className={classnames(classFinal)} 
       onClick={onClick}
+      type={btnType}
     >
       {icon && <FontAwesomeIcon className={styles.icon} icon={icon} />}
       <div className={styles.label}>{title}</div>

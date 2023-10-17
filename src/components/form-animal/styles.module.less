@@ -1,3 +1,11 @@
+@import '../../assets/styles/clean.less';
+@import '../../assets/styles/color.less';
+
+.cont {
+  background: @back-card;
+  padding: 20px;
+}
+
 .name {
   grid-area: name;
 }
@@ -26,7 +34,7 @@
   grid-area: desc;
 }
 
-.cont {
+.form {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr;
@@ -40,3 +48,7 @@
   grid-gap: 20px;
 }
 
+.actions {
+  display: flex;
+  justify-content: right;
+}
