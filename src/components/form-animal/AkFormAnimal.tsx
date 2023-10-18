@@ -85,16 +85,18 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
             title={t('labels.sex')}
             hint={msgFormik('sex')}
           >
-            <AkRadioButton
-              label={t(`labels.${EnumSex.Female}`)}
-              checked={formik.values.sex === EnumSex.Female}
-              {...injectFormik('sex')}
-            />
-            <AkRadioButton
-              label={t(`labels.${EnumSex.Male}`)}
-              checked={formik.values.sex === EnumSex.Male}
-              {...injectFormik('sex')}
-            />
+            <div className={styles.ele}>
+              <AkRadioButton
+                label={t(`labels.${EnumSex.FEMALE}`)}
+                checked={formik.values.sex === EnumSex.FEMALE}
+                {...injectFormik('sex')}
+              />
+              <AkRadioButton
+                label={t(`labels.${EnumSex.MALE}`)}
+                checked={formik.values.sex === EnumSex.MALE}
+                {...injectFormik('sex')}
+              />
+            </div>
           </AkField>
         </div>
         <div className={styles.breed}>

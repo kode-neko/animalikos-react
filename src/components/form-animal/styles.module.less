@@ -16,6 +16,11 @@
 
 .sex {
   grid-area: sex;
+  .ele {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .breed {
@@ -46,6 +51,18 @@
     "bday enter"
     "desc desc";
   grid-gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .form {
+    grid-template-areas: 
+      "name name"
+      "species species"
+      "sex sex"
+      "breed breed"
+      "bday enter"
+      "desc desc";
+  }
 }
 
 .actions {
