@@ -12,6 +12,7 @@ import { AkMainBarProps } from '../types';
 const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
   theme,
   lang,
+  onClickHome,
   onClickCreate,
   onClickSocial,
   onClickTheme,
@@ -21,7 +22,10 @@ const AkMainBar: React.FunctionComponent<AkMainBarProps> = ({
   const [isSocialMenu, setIsSocialMenu] = useState<boolean>(false);
   return (
     <div className={styles.cont}>
-      <div className={styles.title}>
+      <div 
+        className={styles.title}
+        onClick={onClickHome}
+      >
         {main.title}
       </div>
       <div className={styles.options}>

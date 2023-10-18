@@ -50,7 +50,10 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarProps> = ({
               icon={faPlusCircle}
               size='m'
               type='reverse'
-              onClick={onClickCreate}
+              onClick={() => {
+                setIsSideMenu(false);
+                onClickCreate();
+              }}
             />
           </li>
         </ul>

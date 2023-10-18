@@ -19,6 +19,7 @@ export const MenuFrame: React.FunctionComponent = () => {
         <AkMainBar
           theme='dark'
           lang={i18n.language as typeLang}
+          onClickHome={() => navigate('/')}
           onClickCreate={()=> navigate('/create')}
           onClickSocial={()=>{}}
           onClickTheme={()=>{}}

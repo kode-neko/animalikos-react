@@ -4,6 +4,7 @@ type typeLang = 'en' | 'es'
 type AkMainBarProps = {
   theme: typeTheme;
   lang: typeLang;
+  onClickHome?: () => void;
   onClickCreate: () => void,
   onClickSocial: (social: string) => void,
   onClickTheme: (isRight: boolean) => void,
