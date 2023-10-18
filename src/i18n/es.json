@@ -22,7 +22,8 @@
     "cow": "Vaca",
     "save": "Guardar",
     "back": "Volver",
-    "enterValue": "{{y}} años"
+    "enterValue": "{{y}} años",
+    "close": "Cerrar"
   },
   "title": {
     "empty": "No hay resultados",

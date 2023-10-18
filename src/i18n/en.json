@@ -22,7 +22,15 @@
     "cow": "Cow",
     "save": "Save",
     "back": "Back",
-    "enterValue": "{{y}} years"
+    "enterValue": "{{y}} years",
+    "close": "Close"
+  },
+  "social": {
+    "twitter": "Twitter",
+    "github": "GitHub",
+    "codepen": "Codepen",
+    "stackblitz": "StackBlitz",
+    "figma": "Figma"
   },
   "title": {
     "empty": "No hay resultados",
