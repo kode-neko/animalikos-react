@@ -93,9 +93,12 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarProps> = ({
           </li>
         </ul>
       </div>
-      <AkOverlay
-        isVisible={isSideMenu}
-      />
+      <div onClick={() => setIsSideMenu(!isSideMenu)}>
+        <AkOverlay
+          isVisible={isSideMenu}
+          color='black'
+        />
+      </div>
     </>
   );
 };

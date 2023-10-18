@@ -3,12 +3,13 @@ import styles from './styles.module.less';
 
 type AkOverlayProps = {
   isVisible: boolean;
+  color?: 'main' | 'black';
 }
 
-const AkOverlay: React.FunctionComponent<AkOverlayProps> = ({isVisible}: AkOverlayProps) => {
+const AkOverlay: React.FunctionComponent<AkOverlayProps> = ({isVisible, color='main'}: AkOverlayProps) => {
   return (
     <div
-      className={classNames(styles.cont, isVisible && styles.visible)}
+      className={classNames(styles.cont, isVisible && styles.visible, styles[color])}
     />
   );
 };
