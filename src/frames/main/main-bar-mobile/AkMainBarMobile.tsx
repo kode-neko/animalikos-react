@@ -4,7 +4,7 @@ import { AkButton, AkOverlay, AkSwitch } from '../../../components';
 import styles from './styles.module.less';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { socialList } from '../../../globals';
+import { main, socialList } from '../../../globals';
 import { Social } from '../../../models';
 import { AkIconButton } from '../../../components/icon-button';
 import classNames from 'classnames';
@@ -28,7 +28,7 @@ const AkMainBarMobile: React.FunctionComponent<AkMainBarProps> = ({
           onClick={() => setIsSideMenu(!isSideMenu)}
         />
         <div className={styles.title}>
-          {t('mainTitle')}
+          {main.title}
         </div>
       </div>
       <div 
