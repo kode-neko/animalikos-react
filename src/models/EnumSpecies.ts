@@ -1,6 +1,7 @@
 enum EnumSpecies {
-  Cat = 'cat',
-  Dog = 'dog'
+  CAT = 'cat',
+  DOG = 'dog',
+  COW = 'cow',
 }
 
 export default EnumSpecies;

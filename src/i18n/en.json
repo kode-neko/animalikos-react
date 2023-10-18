@@ -21,7 +21,8 @@
     "dog": "Dog",
     "cow": "Cow",
     "save": "Save",
-    "back": "Back"
+    "back": "Back",
+    "enterValue": "{{y}} years"
   },
   "title": {
     "empty": "No hay resultados",
@@ -32,6 +33,7 @@
     "empty": "No se han obtenido animales. Inténtelo más tarde"
   },
   "placeH": {
+    "search": "animal name...",
     "name": "",
     "breed": "",
     "desc": "A description of the animal..."
