@@ -55,7 +55,7 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
   const msgFormik: (field: keyof Animal) => string = (field: keyof Animal): string => ((formik.touched[field] && formik.errors[field]) as string);
 
   return (
-    <div className={styles.cont} >
+    <>
       <form className={styles.form}>
         <div className={styles.name}>
           <AkField
@@ -154,7 +154,7 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
           }}
         />
       </div>
-    </div>
+    </>
   );
 };
 

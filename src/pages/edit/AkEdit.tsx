@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AkFormAnimal, AkHeaderPage } from "../../components";
-import styles from './styles.module.less';
 import { Animal } from "../../models";
 import { NavigateFunction, useNavigate, useParams } from "react-router-dom";
 import { animalServiceMng } from "../../service";
@@ -28,10 +27,9 @@ const AkEdit: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div className={styles.cont}>
-      <AkHeaderPage
-        title={t('title.edit')}
-      />
+    <AkHeaderPage
+      title={t('title.edit')}
+    >
       {
         animal &&
         <AkFormAnimal 
@@ -39,7 +37,7 @@ const AkEdit: React.FunctionComponent = () => {
           onSave={handleSave}
         /> 
       }
-    </div>
+    </AkHeaderPage>
   );
 };
 

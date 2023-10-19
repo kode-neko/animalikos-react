@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { Animal, EnumSex, EnumSpecies } from "../../models";
 import { useTranslation } from "react-i18next";
-import styles from './styles.module.less';
 import { AkFormAnimal, AkHeaderPage } from "../../components";
 import { animalServiceMng } from "../../service";
 import { NavigateFunction, useNavigate } from "react-router-dom";
@@ -12,8 +11,8 @@ const AkCreate: React.FunctionComponent = () => {
   
   const animal: Animal = {
     name: '',
-    species: EnumSpecies.Cat,
-    sex: EnumSex.Female,
+    species: EnumSpecies.CAT,
+    sex: EnumSex.FEMALE,
     breed: '',
     bday: dayjs().toISOString(),
     enter: dayjs().toISOString(),
@@ -30,10 +29,9 @@ const AkCreate: React.FunctionComponent = () => {
   };
   
   return (
-    <div className={styles.cont}>
-      <AkHeaderPage
-        title={t('title.create')}
-      />
+    <AkHeaderPage
+      title={t('title.create')}
+    >
       {
         animal &&
         <AkFormAnimal 
@@ -41,7 +39,7 @@ const AkCreate: React.FunctionComponent = () => {
           onSave={handleSave}
         /> 
       }
-    </div>
+    </AkHeaderPage>
   );
 };
 
