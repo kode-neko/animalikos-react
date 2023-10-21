@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/typedef */
 import AkNotiHub from "./AkNotiHub";
 import { AkNoti } from "./types";
 
 const notiHub: AkNotiHub = AkNotiHub.getInstance();
 
-const useAkNoti: (msg: AkNoti) => void = (msg: AkNoti) => {
-  notiHub.sendMessage(msg);
+const useAkNoti = () => {
+  return { msgFunc: (msg: AkNoti) => notiHub.sendMessage(msg) };
 };
 
 export default useAkNoti;

@@ -34,11 +34,16 @@
   },
   "title": {
     "empty": "No hay resultados",
+    "delete": "Borrar",
     "edit": "Edit",
     "create": "Create"
   },
   "desc": {
-    "empty": "No se han obtenido animales. Inténtelo más tarde"
+    "empty": "No se han obtenido animales. Inténtelo más tarde",
+    "errorServer": "There're was a problem. Try again",
+    "delete": "Animal deleted succesfully",
+    "desc": "Una descripción del animal...",
+    "success": "The operation done successfully"
   },
   "placeH": {
     "search": "animal name...",

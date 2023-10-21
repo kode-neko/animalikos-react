@@ -4,11 +4,12 @@ import styles from './styles.module.less';
 import { animalServiceMng } from '../../service';
 import { AkButton, AkCard, AkMsgPage } from '../../components';
 import { useTranslation } from 'react-i18next';
-import { faFrown, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faFaceDizzy, faFrown, faSmile, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { AkSearch } from './components';
 import { AkAlert } from '../../components/alert';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { AkAlertAction } from '../../components/alert/AkAlert';
+import { useAkNoti } from '../../components/notification';
 
 type VisibleAlert = {
   isVisible: boolean,
@@ -22,6 +23,7 @@ const AkHome: React.FunctionComponent = () => {
   const [searchStr, setSearchStr] = useState<Search>({limit: 10, offset: 0, str: ''});
   const [isLoadMore, setIsLoadMore] = useState<boolean>(true);
   const [alertDel, setAlertDel] = useState<VisibleAlert>({isVisible: false});
+  const {msgFunc} = useAkNoti();
 
   const handleSearch: (search: string)=> void = (search: string): void => {
     const newSearch: Search = {limit: 10, offset: 0, str: search};
@@ -45,11 +47,12 @@ const AkHome: React.FunctionComponent = () => {
     animalServiceMng().delete(_id as string)
       .then((ok: boolean) => {
         if(ok) {
-          console.log('deleted');
+          msgFunc({msg: t('desc.success'), icon: faSmile});
           getAnimalList({limit: 10, offset: 0}, []);
         } else
-          console.log('fail');
-      });
+          msgFunc({msg: t('desc.notDeleted'), icon: faFaceDizzy});
+      })
+      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}));
   };
   const getActions: (animal: Animal) => AkAlertAction[] = (animal: Animal): AkAlertAction[] => [
     {
@@ -76,7 +79,8 @@ const AkHome: React.FunctionComponent = () => {
           setIsLoadMore(false);
         else
           setAnimalList([...list, ...res]);
-      });
+      })
+      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}));
   };
 
   return (
@@ -125,7 +129,7 @@ const AkHome: React.FunctionComponent = () => {
         isVisible={alertDel.isVisible} 
         title={t('title.delete')}
         icon={faTrash}
-        msg={t('msg.delete')}
+        msg={t('desc.delete')}
         onClose={handleClose}
         actions={getActions(alertDel.animal as Animal)}
       />

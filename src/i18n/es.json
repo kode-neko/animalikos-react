@@ -27,17 +27,21 @@
   },
   "title": {
     "empty": "No hay resultados",
+    "delete": "Borrar",
     "edit": "Editar",
     "create": "Crear"
   },
   "desc": {
-    "empty": "No se han obtenido animales. Inténtelo más tarde"
+    "empty": "No se han obtenido animales. Inténtelo más tarde",
+    "errorServer": "Ha habido un problema. Vuelvalo a intentar",
+    "delete": "Animal borrado con éxito",
+    "desc": "Una descripción del animal...",
+    "success": "La operación se ha realizado con éxito"
   },
   "placeH": {
     "search": "nombre del animal...",
     "name": "",
-    "breed": "",
-    "desc": "Una descripción del animal..."
+    "breed": ""
   },
   "error": {
     "maxStr": "Elm tamaño del campo es de {{size}}",

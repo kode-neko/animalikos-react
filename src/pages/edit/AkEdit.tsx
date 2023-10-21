@@ -5,21 +5,20 @@ import { Animal } from "../../models";
 import { useParams } from "react-router-dom";
 import { animalServiceMng } from "../../service";
 import { useAkNoti } from "../../components/notification";
-import { faSmile } from "@fortawesome/free-solid-svg-icons";
+import { faFaceDizzy, faSmile } from "@fortawesome/free-solid-svg-icons";
 
 const AkEdit: React.FunctionComponent = () => {
   const {t} = useTranslation();
   const {id} = useParams();
   const [animal, setAnimal] = useState<Animal>();
+  const {msgFunc} = useAkNoti();
 
   const handleSave: (edited: Animal) => void = (edited: Animal) => {
     animalServiceMng().edit({...edited, _id: id})
       .then(() => { 
-        console.log('NOTI edited');
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useAkNoti({msg: ('NOTI edited'), icon: faSmile});
+        msgFunc({msg: t('desc.success'), icon: faSmile});
       })
-      .catch(() => console.log('NOTI error'));
+      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}));
   };
 
   useEffect(() => {
