@@ -20,21 +20,26 @@ class AnimalLocal implements IAnimalService {
   getbyId(id: string): Promise<Animal|undefined> {
     return Promise.resolve((list.find((a: Animal) => a._id === id)));
   }
+
   getBySearch(search: Search): Promise<Animal[]> {
     const {limit, offset, str} = search;
-    const slice: Animal[] = list.slice(offset, offset+limit-1);
-    return Promise.resolve((slice.filter((a: Animal) => a.name.match(str as string))));
+    const listResult: Animal[] = list.filter((a: Animal) => a.name.match(str as string));
+    return Promise.resolve(listResult.slice(offset, offset+limit));
   }
+
   save(animal: Animal): Promise<Animal> {
-    list = [{_id: uuidv4(),...animal}, ...list];
-    return Promise.resolve(animal);
+    const newAnimal: Animal = {_id: uuidv4(),...animal};
+    list = [newAnimal, ...list];
+    return Promise.resolve(newAnimal);
   }
+
   edit(animal: Animal): Promise<boolean> {
     const finded: boolean = !!list.find((a:Animal) => a._id === animal._id);
     if(finded) 
       list = list.map((a: Animal) => a._id === animal._id ? animal : a);
     return Promise.resolve(finded);
   }
+
   delete(id: string): Promise<boolean> {
     const finded: boolean = !!list.find((a:Animal) => a._id === id);
     if(finded) 

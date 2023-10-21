@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import AkNotiHub from './AkNotiHub';
 import styles from './styles.module.less';
 import { AkNoti } from './types';
-import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from "framer-motion";
 
 const notiHub: AkNotiHub = AkNotiHub.getInstance();
 
@@ -13,29 +13,33 @@ type AkNotiTagProps = {
 
 const AkNotiTag: React.FunctionComponent<AkNotiTagProps> = ({noti}: AkNotiTagProps) => {
   return (
-    <div className={styles.tag}>
+    <motion.div 
+      className={styles.tag}
+      initial={{ x: "360px" }}
+      animate={{ x: "0" }}
+      exit={{ x: "360px" }}
+    >
       {noti.icon && <div className={styles.icon}><FontAwesomeIcon icon={noti.icon} /></div>}
       <div className={styles.msg}>{noti.msg}</div>
-    </div>
+    </motion.div>
   );
 };
 
 const AkNotiStack: React.FunctionComponent = () => {
-  const [idSub, setIdSub] = useState<string>("");
+  const [idSub, setIdSub] = useState<string>();
   const [notiList, setNotiList] = useState<AkNoti[]>([]);
 
-  const callbackHub: (noti: AkNoti) => void = (noti: AkNoti) => {
-    const id: string = uuidv4();
-    setNotiList([...notiList, {...noti, id}]);
-    setTimeout(() => {
-      setNotiList(notiList.filter((n: AkNoti) => n.id === id));
-    }, 3000);
+  // eslint-disable-next-line @typescript-eslint/typedef
+  const callbackHub = (list: AkNoti[]) => {
+    setNotiList(list);
   };
 
   useEffect(() => {
-    const id: string = notiHub.subscribe(callbackHub);
-    setIdSub(id);
-    return () => notiHub.unsubscribe(idSub);
+    if(!idSub) {
+      const id: string = notiHub.subscribe(callbackHub);
+      setIdSub(id);
+    }
+    return () => notiHub.unsubscribe(idSub as string);
   }, []);
 
   return (

@@ -8,7 +8,7 @@ type AkNoti = {
 
 type AkNotiListener = {
   id?: string;
-  callback: (n: AkNoti) => void
+  callback: (list: AkNoti[]) => void
 }
 
 export {

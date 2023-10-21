@@ -22,10 +22,10 @@ const AkCreate: React.FunctionComponent = () => {
   const handleSave: (created: Animal) => void = (created: Animal) => {
     animalServiceMng().save(created)
       .then((a: Animal) => { 
-        console.log('created: ', a);
+        console.log('NOTI created: ', a);
         navigate('/');
       })
-      .catch(() => console.log('error'));
+      .catch(() => console.log('NOTI error'));
   };
   
   return (
