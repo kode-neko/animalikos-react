@@ -86,7 +86,7 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
           >
             <AkSelect
               values={Object.values(EnumSpecies).map((s: string) => ({label: t(`labels.${s}`), value: s}))}
-              selected={EnumSpecies.Cat}
+              selected={formik.values.species}
               {...injectFormik('species')}
             />
           </AkField>
