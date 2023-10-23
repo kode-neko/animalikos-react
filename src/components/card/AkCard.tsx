@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './styles.module.less';
-import { faCat, faCow, faDog, faPaw, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCat, faCow, faDog, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Animal, EnumSpecies } from '../../models';
 import { useTranslation } from "react-i18next";
 import { AkButton } from '../button';

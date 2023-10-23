@@ -6,6 +6,17 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import styles from './styles.module.less';
 import { AkButton } from "../button";
+import dayjs from "dayjs";
+
+function parseISOtoDateForm(iso: string):string {
+  const date: dayjs.Dayjs = dayjs(iso);
+  return date.format('YYYY-MM-DD');
+}
+
+function parseDateFormToISO(dateForm: string):string {
+  const date: dayjs.Dayjs = dayjs(dateForm);
+  return date.toISOString();
+}
 
 type AkFormAnimalProps = {
   animal: Animal,
@@ -39,9 +50,9 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
   // eslint-disable-next-line @typescript-eslint/typedef
   const formik = useFormik({
     validationSchema: schema,
-    initialValues: animal,
-    onSubmit: (a: Animal) => {
-      onSave(a);
+    initialValues: {...animal, enter: parseISOtoDateForm(animal.enter), bday: parseISOtoDateForm(animal.bday)},
+    onSubmit: (animal: Animal) => {
+      onSave({...animal, enter: parseDateFormToISO(animal.enter), bday: parseDateFormToISO(animal.bday)});
     }
   });
   // eslint-disable-next-line @typescript-eslint/typedef
@@ -117,6 +128,7 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
           >
             <AkInput
               placeholder={t('placeH.bday')}
+              date={true}
               {...injectFormik('bday')}
             />
           </AkField>
@@ -128,6 +140,7 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
           >
             <AkInput
               placeholder={t('placeH.enter')}
+              date={true}
               {...injectFormik('enter')}
             />
           </AkField>

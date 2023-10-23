@@ -4,8 +4,6 @@ import type {
 } from './app';
 import {
   appSlice,
-  changeLang, 
-  changeTheme, 
   changeLoading
 } from './app';
 
@@ -19,7 +17,5 @@ const mainStore: Store<MainStore> = configureStore({
 
 export {
   mainStore,
-  changeLang, 
-  changeTheme, 
   changeLoading
 };
