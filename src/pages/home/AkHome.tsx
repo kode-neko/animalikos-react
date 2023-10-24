@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, Dispatch} from 'react';
 import { Animal, Search } from '../../models';
 import styles from './styles.module.less';
 import { animalServiceMng } from '../../service';
@@ -10,6 +10,9 @@ import { AkAlert } from '../../components/alert';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { AkAlertAction } from '../../components/alert/AkAlert';
 import { useAkNoti } from '../../components/notification';
+import { useDispatch } from 'react-redux';
+import { changeLoading } from '../../store';
+import { AnyAction } from '@reduxjs/toolkit';
 
 type VisibleAlert = {
   isVisible: boolean,
@@ -18,6 +21,7 @@ type VisibleAlert = {
 
 const AkHome: React.FunctionComponent = () => {
   const {t} = useTranslation();
+  const dispatch: Dispatch<AnyAction> = useDispatch();
   const navigate: NavigateFunction = useNavigate();
   const [animalList, setAnimalList] = useState<Animal[]>([]);
   const [searchStr, setSearchStr] = useState<Search>({limit: 10, offset: 0, str: ''});
@@ -72,6 +76,7 @@ const AkHome: React.FunctionComponent = () => {
   }, []);
 
   const getAnimalList: (search: Search, list: Animal[]) => void = (search: Search, list: Animal[]): void => {
+    dispatch(changeLoading(true));
     setSearchStr(search);
     animalServiceMng().getBySearch(search)
       .then((res: Animal[]) => {
@@ -80,7 +85,8 @@ const AkHome: React.FunctionComponent = () => {
         else
           setAnimalList([...list, ...res]);
       })
-      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}));
+      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}))
+      .finally(() => dispatch(changeLoading(false)));
   };
 
   return (
