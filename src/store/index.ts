@@ -12,8 +12,14 @@ interface MainStore {
 }
 
 const mainStore: Store<MainStore> = configureStore({
-  reducer: appSlice.reducer
+  reducer: {
+    app: appSlice.reducer
+  }
 });
+
+export type {
+  MainStore
+};
 
 export {
   mainStore,

@@ -28,8 +28,29 @@
 }
 
 .cont {
-  padding: 20px;
+  position: relative;
   min-height: calc(100vh - 180px);
+
+  .outlet {
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+  
+  .overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: @overlay-black;
+    z-index: 2;
+    top: 80px;
+    left: calc(50% - 510px);
+    width: 1020px;
+    height: 100%;
+  }
 }
 
 .footer {

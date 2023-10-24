@@ -11,6 +11,9 @@
   top: 0;
   z-index: 10;
   transition: opacity 0.3s linear, visibility 0.3s linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .visible {
@@ -24,4 +27,19 @@
 
 .black {
   background: @overlay-black;
+}
+
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  box-shadow: 36px 0px 0 0 rgba(30,163,201,0.2), 29.2px 21.2px 0 0 rgba(30,163,201,0.4), 11.16px 34.2px 0 0 rgba(30,163,201,0.6), -11.16px 34.2px 0 0 rgba(30,163,201,0.8), -29.2px 21.2px 0 0 #1ea3c9;
+  animation: spinner-b87k6z 1.4s infinite linear;
+}
+
+@keyframes spinner-b87k6z {
+  to {
+     transform: rotate(360deg);
+  }
 }

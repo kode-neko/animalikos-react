@@ -6,9 +6,13 @@ import { AkFooter } from './footer';
 import { useTranslation } from 'react-i18next';
 import { typeLang } from './types';
 import { AkNotiStack } from '../../components/notification';
+import { AkOverlay } from '../../components';
+import { useSelector } from 'react-redux';
+import { MainStore } from '../../store';
 
 export const MenuFrame: React.FunctionComponent = () => {
   const {i18n} = useTranslation();
+  const loading: boolean = useSelector((state: MainStore) => state.app.loading);
   const navigate: NavigateFunction = useNavigate();
   const handleLang: (lang: string) => void = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -39,7 +43,8 @@ export const MenuFrame: React.FunctionComponent = () => {
           />
         </div>
         <div className={styles.cont}>
-          <Outlet />
+          <div className={styles.outlet}><Outlet /></div>
+          <AkOverlay isVisible={loading} spinner={true} color='black' />
         </div>
         <div className={styles.footer}>
           <AkFooter />
