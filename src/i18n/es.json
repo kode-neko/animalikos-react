@@ -23,7 +23,9 @@
     "save": "Guardar",
     "back": "Volver",
     "enterValue": "{{y}} años",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "accept": "Aceptar"
   },
   "title": {
     "empty": "No hay resultados",

@@ -23,7 +23,9 @@
     "save": "Save",
     "back": "Back",
     "enterValue": "{{y}} years",
-    "close": "Close"
+    "close": "Close",
+    "cancel": "Cancel",
+    "accept": "Accept"
   },
   "social": {
     "twitter": "Twitter",

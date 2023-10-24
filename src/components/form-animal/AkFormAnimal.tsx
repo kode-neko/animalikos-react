@@ -52,7 +52,9 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
     validationSchema: schema,
     initialValues: {...animal, enter: parseISOtoDateForm(animal.enter), bday: parseISOtoDateForm(animal.bday)},
     onSubmit: (animal: Animal) => {
-      onSave({...animal, enter: parseDateFormToISO(animal.enter), bday: parseDateFormToISO(animal.bday)});
+      if(formik.isValid) {
+        onSave({...animal, enter: parseDateFormToISO(animal.enter), bday: parseDateFormToISO(animal.bday)});
+      }
     }
   });
   // eslint-disable-next-line @typescript-eslint/typedef
@@ -161,10 +163,7 @@ const AkFormAnimal: React.FunctionComponent<AkFormAnimalProps> = ({animal, onSav
         <AkButton
           title={t('labels.save')}
           btnType="submit"
-          onClick={() => {
-            console.log('save');
-            formik.handleSubmit();          
-          }}
+          onClick={() => formik.handleSubmit()}
         />
       </div>
     </>

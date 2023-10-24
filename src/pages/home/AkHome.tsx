@@ -27,10 +27,12 @@ const AkHome: React.FunctionComponent = () => {
   const [searchStr, setSearchStr] = useState<Search>({limit: 10, offset: 0, str: ''});
   const [isLoadMore, setIsLoadMore] = useState<boolean>(true);
   const [alertDel, setAlertDel] = useState<VisibleAlert>({isVisible: false});
+  const [emptySearch, setEmptySearch] = useState<boolean>(false);
   const {msgFunc} = useAkNoti();
 
   const handleSearch: (search: string)=> void = (search: string): void => {
     const newSearch: Search = {limit: 10, offset: 0, str: search};
+    setEmptySearch(false);
     getAnimalList(newSearch, []);
   };
   const handleAll: () => void = (): void => {
@@ -47,6 +49,7 @@ const AkHome: React.FunctionComponent = () => {
   const hanldeClickEdit: (animal: Animal) => void = (animal: Animal): void =>
     navigate(`/edit/${animal._id}`);
   const hanldeClickDelete: (_id: string) => void = (_id: string): void => {
+    dispatch(changeLoading(true));
     handleClose();
     animalServiceMng().delete(_id as string)
       .then((ok: boolean) => {
@@ -56,7 +59,8 @@ const AkHome: React.FunctionComponent = () => {
         } else
           msgFunc({msg: t('desc.notDeleted'), icon: faFaceDizzy});
       })
-      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}));
+      .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}))
+      .finally(() => dispatch(changeLoading(false)));
   };
   const getActions: (animal: Animal) => AkAlertAction[] = (animal: Animal): AkAlertAction[] => [
     {
@@ -82,8 +86,11 @@ const AkHome: React.FunctionComponent = () => {
       .then((res: Animal[]) => {
         if(res.length === 0)
           setIsLoadMore(false);
-        else
-          setAnimalList([...list, ...res]);
+        else {
+          const newList: Animal[] = [...list, ...res];
+          setAnimalList(newList);
+          newList.length === 0 && setEmptySearch(true);
+        }
       })
       .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}))
       .finally(() => dispatch(changeLoading(false)));
@@ -100,35 +107,34 @@ const AkHome: React.FunctionComponent = () => {
             onAll={handleAll}
           />
         </div>
-        {
-          animalList.length === 0 ? 
-            <div className={styles.empty}>
-              <AkMsgPage
-                icon={faFrown}
-                title={t('title.empty')}
-                msg={t('desc.empty')}
-              />
-            </div>
-            :
-            <div className={styles.list}>
-              {animalList.map((animal: Animal) => 
-                <div key={animal._id} className={styles.card}>
-                  <AkCard 
-                    animal={animal}
-                    onClickEdit={hanldeClickEdit}
-                    onClickDel={() => setAlertDel({animal, isVisible: true})}
-                  />
-                </div>
-              )}
-            </div>
+        {emptySearch ? 
+          <div className={styles.empty}>
+            <AkMsgPage
+              icon={faFrown}
+              title={t('title.empty')}
+              msg={t('desc.empty')}
+            />
+          </div>
+          :
+          <div className={styles.list}>
+            {animalList.map((animal: Animal) => 
+              <div key={animal._id} className={styles.card}>
+                <AkCard 
+                  animal={animal}
+                  onClickEdit={hanldeClickEdit}
+                  onClickDel={() => setAlertDel({animal, isVisible: true})}
+                />
+              </div>
+            )}
+          </div>
         }
-        {isLoadMore && 
-        <div className={styles.loadMore}>
-          <AkButton 
-            onClick={hanldeLoadMore}
-            title={t('labels.loadMore')}
-          />
-        </div>
+        {isLoadMore &&
+          <div className={styles.loadMore}>
+            <AkButton 
+              onClick={hanldeLoadMore}
+              title={t('labels.loadMore')}
+            />
+          </div>
         }
       </div>
       <AkAlert 

@@ -23,7 +23,7 @@ class AkNotiHub {
     this.messages = [...this.messages, {...msg, id}];
     this.subscribers.map((s: AkNotiListener) => s.callback(this.messages));
     setTimeout(() => {
-      const list: AkNoti[] = this.messages.filter((n: AkNoti) => n.id === id);
+      const list: AkNoti[] = this.messages.filter((n: AkNoti) => n.id !== id);
       this.messages = list;
       this.subscribers.map((s: AkNotiListener) => s.callback(this.messages));
     }, 3000);
