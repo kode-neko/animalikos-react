@@ -25,14 +25,13 @@ const AkHome: React.FunctionComponent = () => {
   const navigate: NavigateFunction = useNavigate();
   const [animalList, setAnimalList] = useState<Animal[]>([]);
   const [searchStr, setSearchStr] = useState<Search>({limit: 10, offset: 0, str: ''});
-  const [isLoadMore, setIsLoadMore] = useState<boolean>(true);
+  const [isLoadMore, setIsLoadMore] = useState<boolean>(false);
   const [alertDel, setAlertDel] = useState<VisibleAlert>({isVisible: false});
   const [emptySearch, setEmptySearch] = useState<boolean>(false);
   const {msgFunc} = useAkNoti();
 
   const handleSearch: (search: string)=> void = (search: string): void => {
     const newSearch: Search = {limit: 10, offset: 0, str: search};
-    setEmptySearch(false);
     getAnimalList(newSearch, []);
   };
   const handleAll: () => void = (): void => {
@@ -84,13 +83,10 @@ const AkHome: React.FunctionComponent = () => {
     setSearchStr(search);
     animalServiceMng().getBySearch(search)
       .then((res: Animal[]) => {
-        if(res.length === 0)
-          setIsLoadMore(false);
-        else {
-          const newList: Animal[] = [...list, ...res];
-          setAnimalList(newList);
-          newList.length === 0 && setEmptySearch(true);
-        }
+        const newList: Animal[] = [...list, ...res];
+        setAnimalList(newList);
+        setEmptySearch(newList.length === 0);
+        setIsLoadMore(res.length !== 0);
       })
       .catch(() => msgFunc({msg: t('desc.errorServer'), icon: faFaceDizzy}))
       .finally(() => dispatch(changeLoading(false)));
@@ -126,6 +122,7 @@ const AkHome: React.FunctionComponent = () => {
                 />
               </div>
             )}
+
           </div>
         }
         {isLoadMore &&
@@ -136,6 +133,7 @@ const AkHome: React.FunctionComponent = () => {
             />
           </div>
         }
+        
       </div>
       <AkAlert 
         isVisible={alertDel.isVisible} 
