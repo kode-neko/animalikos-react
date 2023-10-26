@@ -65,7 +65,6 @@ const AkCard: React.FunctionComponent<AkCardProps> = ({animal, onClickEdit, onCl
         <FontAwesomeIcon className={styles.icon} icon={getAnimalIcon(animal.species)} />
         <h2 className={styles.title}>{animal.name}</h2>
       </div>
-      <div className={styles.divider} />
       <div className={styles.subHeader}>
         <AkInfoCard
           field={t(`labels.age`)}
@@ -80,7 +79,6 @@ const AkCard: React.FunctionComponent<AkCardProps> = ({animal, onClickEdit, onCl
           value={formatDate(animal.enter)}
         />
       </div>
-      <div className={styles.divider} />
       <div className={styles.desc}>
         {animal.desc}
       </div>
@@ -88,14 +86,14 @@ const AkCard: React.FunctionComponent<AkCardProps> = ({animal, onClickEdit, onCl
         <AkButton
           title={t(`labels.delete`)}
           icon={faTrash}
-          size='m'
-          type='main'
+          size='s'
+          type='second'
           onClick={() => onClickDel(animal._id as string)}
         />
         <AkButton
           title={t(`labels.edit`)}
           icon={faPen}
-          size='m'
+          size='s'
           type='second'
           onClick={() => onClickEdit(animal)}
         />
