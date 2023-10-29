@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from './styles.module.less';
 import { useTranslation } from "react-i18next";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion';
 
 type AkHeaderPageProps = {
   title: string
@@ -13,7 +14,12 @@ const AkHeaderPage: React.FunctionComponent<React.PropsWithChildren<AkHeaderPage
   const navigate: NavigateFunction = useNavigate();
   return (
     <>
-      <div className={styles.header}>
+      <motion.div 
+        className={styles.header}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{duration: 0.5, delay: 0.3}}
+      >
         <div className={styles.left}>
           <div className={styles.back} onClick={() => navigate(-1)}>
             <FontAwesomeIcon 
@@ -28,10 +34,15 @@ const AkHeaderPage: React.FunctionComponent<React.PropsWithChildren<AkHeaderPage
         <div className={styles.right}>
           {title}
         </div>
-      </div>
-      <div className={styles.cont}>
+      </motion.div>
+      <motion.div 
+        className={styles.cont}
+        initial={{ opacity: 0, y: '70px' }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{duration: 0.5, delay: 0.3}}
+      >
         {children}
-      </div>
+      </motion.div>
     </>
   );
 };

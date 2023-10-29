@@ -13,6 +13,7 @@ import { useAkNoti } from '../../components/notification';
 import { useDispatch } from 'react-redux';
 import { changeLoading } from '../../store';
 import { AnyAction } from '@reduxjs/toolkit';
+import { motion } from "framer-motion";
 
 type VisibleAlert = {
   isVisible: boolean,
@@ -95,14 +96,19 @@ const AkHome: React.FunctionComponent = () => {
   return (
     <>
       <div className={styles.cont}>
-        <div className={styles.search}>
+        <motion.div 
+          className={styles.search}
+          initial={{ opacity: 0, x: '70px' }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{duration: 0.5, delay: 0.3}}
+        >
           <AkSearch
             placeholder={t('placeH.search')}
             searchStr={searchStr.str}
             onSearch={handleSearch}
             onAll={handleAll}
           />
-        </div>
+        </motion.div>
         {emptySearch ? 
           <div className={styles.empty}>
             <AkMsgPage
@@ -113,25 +119,35 @@ const AkHome: React.FunctionComponent = () => {
           </div>
           :
           <div className={styles.list}>
-            {animalList.map((animal: Animal) => 
-              <div key={animal._id} className={styles.card}>
+            {animalList.map((animal: Animal, index: number) => 
+              <motion.div 
+                key={animal._id} 
+                className={styles.card}
+                initial={{ opacity: 0, x: index%2 === 0 ? '-70px' : '70px' }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{duration: 0.5, delay: 0.3}}
+              >
                 <AkCard 
                   animal={animal}
                   onClickEdit={hanldeClickEdit}
                   onClickDel={() => setAlertDel({animal, isVisible: true})}
                 />
-              </div>
+              </motion.div>
             )}
-
           </div>
         }
         {isLoadMore &&
-          <div className={styles.loadMore}>
+          <motion.div 
+            className={styles.loadMore}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{duration: 0.5, delay: 0.3}}
+          >
             <AkButton 
               onClick={hanldeLoadMore}
               title={t('labels.loadMore')}
             />
-          </div>
+          </motion.div>
         }
         
       </div>

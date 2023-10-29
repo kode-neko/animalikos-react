@@ -9,6 +9,7 @@ import { AkNotiStack } from '../../components/notification';
 import { AkOverlay } from '../../components';
 import { useSelector } from 'react-redux';
 import { MainStore } from '../../store';
+import { motion } from 'framer-motion';
 
 export const MenuFrame: React.FunctionComponent = () => {
   const {i18n} = useTranslation();
@@ -20,7 +21,12 @@ export const MenuFrame: React.FunctionComponent = () => {
 
   return (
     <>
-      <div className={styles.frame}>
+      <motion.div 
+        className={styles.frame}
+        initial={{ opacity: 0}}
+        animate={{ opacity: 1}}
+        transition={{duration: 0.5, delay: 0.2}}
+      >
         <div className={styles.mainBar}>
           <AkMainBar
             theme='dark'
@@ -49,7 +55,7 @@ export const MenuFrame: React.FunctionComponent = () => {
         <div className={styles.footer}>
           <AkFooter />
         </div>
-      </div>
+      </motion.div>
       <AkNotiStack />
     </>
   );
